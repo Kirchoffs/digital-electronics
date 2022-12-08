@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage[margin=1in, includefoot]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{listings}
+
+\setlength\parindent{0pt}
+\pagestyle{fancy}
+\linespread{2}
+\title{Boolean Algebra}
+\date{}
+
+\begin{document}
+\maketitle
+
+George Boole, 19th century mathematician, developed a mathematical system involving logic..
+\section*{Axioms \& Theorem}
+
+\subsection*{Laws}
+\textbf{complementarity} \\
+\textbf{laws of zeros and ones} \\
+\textbf{identities} \\
+\textbf{idempotent law} \\
+\textbf{communitive law} \\
+\textbf{associative} \\
+\textbf{distribution}
+  \begin{flalign*}
+    & x + y \cdot z = (x + y) \cdot (x + z) \\
+    & x \cdot (y + z) = x \cdot y + x \cdot z
+  \end{flalign*}
+\textbf{uniting theorem} \\
+\textbf{de morgan's law}
+\subsection*{Common Math Equation}
+\begin{flalign*}
+& x + \bar{x} \cdot y = x + y \\
+& x \cdot y + y \cdot z + \bar{x} \cdot z = x \cdot y + \bar{x} \cdot z \\
+& x \cdot z + x \cdot \bar{z} = x \\
+& (x + z) \cdot (x + \bar{z}) = x
+\end{flalign*}
+
+\subsection*{Duality}
+Given a logic expression, its dual is obtained by replacing all + operators with · operators, and vice versa, and by replacing all 0s with 1s, and vice versa. The dual of any true statement (axiom or theorem) in Boolean algebra is also a true statement.
+\begin{flalign*}
+  & x \cdot z + x \cdot \bar{z} = x \\
+  & (x + z) \cdot (x + \bar{z}) = x
+\end{flalign*}
+
+\subsection*{XOR}
+\subsubsection*{Properties}
+  \begin{flalign*}
+    & x \land (y \oplus z) = (x \land y) \oplus (x \land z)
+  \end{flalign*}
+
+\subsection*{Other Basic Gates}
+NAND: $\bar{A} + \bar{B}$ \\
+NOR: $\bar{A}\bar{B}$ \\
+XOR: $\bar{A}B + A\bar{B}$ \\
+XNOR: $AB + \bar{A}\bar{B}$
+
+\section*{Logic Networks}
+
+\subsection*{NAND \& NOR Logic Networks}
+Consider a network which consists of only AND and OR logic gates. 
+This network can be transformed into a network of only NAND gates. 
+First, each connection between the AND gate and an OR gate is replaced by a connection that includes two inversions of the signal: 
+one inversion at the output of the AND gate and the other at the input of the OR gate.
+Such double inversion has no effect on the behavior of the network, the OR gate with inversions at its inputs is equivalent to a NAND gate. 
+Thus we can redraw the network using only NAND gates.
+\begin{flalign*}
+f & = x_1 \cdot x_2 + x_3 \cdot x_4 \\
+  & = \overline{\overline{x_1 \cdot x_2}} + \overline{\overline{x_3 \cdot x_4}} \\
+  & = \textnormal{NAND}(\overline{x_1 \cdot x_2}, \; \overline{x_3 \cdot x_4}) \\
+  & = \textnormal{NAND}(\textnormal{NAND}(x_1, \, x_2), \; \textnormal{NAND}(x_3, \, x_4))
+\end{flalign*}
+
+Using NAND gates can implement SOP (sum-of-products) networks. 
+Similarly, using NOR gates can implement a POS (product-of-sums) networks.
+
+\section*{Minimization \& Karnaugh Maps}
+
+\end{document}
